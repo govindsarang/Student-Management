@@ -247,3 +247,15 @@ app_license = "mit"
 # List of apps whose translatable strings should be excluded from this app's translations.
 # ignore_translatable_strings_from = []
 
+doc_events = {
+    "Student": {
+        "after_insert": "student_management.api.student_created"
+    }
+}
+scheduler_events = {
+    "all": [
+        "student_management.tasks.check_fee_status"
+    ]
+}
+
+before_migrate = "student_management.fix_duplicates.run"
