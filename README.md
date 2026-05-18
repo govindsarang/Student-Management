@@ -18,7 +18,7 @@ The goal of this project was not just to create a CRUD application, but to deepl
 This project was built as a learning journey while exploring the actual architecture used inside ERP systems.
 
 ---
-#About Frappe Framework
+About Frappe Framework
 
 Frappe is a full-stack open-source web application framework written in Python and JavaScript. It is the framework on which ERPNext is built.
 
@@ -41,6 +41,7 @@ Form and List UI generation
 Workflow and ERP architecture support
 
 Frappe follows a metadata-driven architecture where applications are mainly built using DocTypes.
+
 ---
 
 # What I Built
