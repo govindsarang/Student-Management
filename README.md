@@ -131,36 +131,52 @@ Created custom API endpoints using:
 
 Built API:
 
-## Pay Fees API
+## REST APIs & Postman Testing
 
-This API:
+As part of this project, multiple REST APIs were built using the Frappe Framework and tested using Postman.
 
-* Creates Fee Record
-* Updates Student fees paid
-* Automatically changes fee status
+### APIs Implemented
 
-Possible statuses:
+#### 1. Create Student API
+Creates a new student record dynamically using backend ORM methods.
 
-* Pending
-* Partial
-* Paid
+Features:
+- Student creation
+- Automatic database insertion
+- Type conversion
+- Validation handling
 
----
+#### 2. Get Student API
+Fetches complete student details using student ID.
 
-# 4. Hooks System
+Returns:
+- Student Name
+- Age
+- Course
+- Total Fees
+- Fees Paid
+- Fee Status
 
-Implemented hooks inside:
+#### 3. Update Student Fees API
+Updates the total fees of a student and saves changes directly to the database.
+
+#### 4. Pay Fees API
+Implements fee payment workflow logic.
+
+Features:
+- Creates Fee Record automatically
+- Updates student fee status
+- Calculates:
+  - Pending
+  - Partial
+  - Paid
+- Uses ORM save and insert operations
+
+#### 5. JSON-based POST API
+A modern POST API was implemented using:
 
 ```python
-hooks.py
-```
-
-Used:
-
-* `doc_events`
-* `after_insert`
-
-Learned how Frappe automatically triggers backend logic after document actions.
+frappe.request.json
 
 ---
 
