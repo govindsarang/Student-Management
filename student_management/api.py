@@ -1,5 +1,5 @@
 import frappe
-
+import requests
 def student_created(doc, method):
 
     print("\n\n")
@@ -127,3 +127,54 @@ def create_student_post():
         "message": "Student Created",
         "student_id": student.name
     }
+import frappe
+import requests
+
+@frappe.whitelist()
+def sync_employee(employee_name):
+
+    try:
+        employee = frappe.get_doc("Employee", employee_name)
+
+        payload = {
+            "employee_name": employee.employee_name,
+            "department": employee.department,
+            "company": employee.company
+        }
+
+        response = requests.post(
+            "https://jsonplaceholder.typicode.com/posts",
+            json=payload
+        )
+
+        return {
+            "success": True,
+            "status_code": response.status_code,
+            "response": response.json()
+        }
+
+    except Exception as e:
+
+        frappe.log_error(frappe.get_traceback(), "Employee Sync Error")
+
+        return {
+            "success": False,
+            "error": str(e)
+        }
+def auto_sync_employee(doc, method):
+
+    payload = {
+        "employee_name": doc.employee_name,
+        "department": doc.department,
+        "company": doc.company
+    }
+
+    response = requests.post(
+        "https://jsonplaceholder.typicode.com/posts",
+        json=payload
+    )
+
+    frappe.log_error(
+        title="Auto Sync Response",
+        message=str(response.json())
+    )

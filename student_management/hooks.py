@@ -259,3 +259,10 @@ scheduler_events = {
 }
 
 before_migrate = "student_management.fix_duplicates.run"
+
+doc_events = {
+    "Employee": {
+        "after_insert": "student_management.api.auto_sync_employee",
+        "on_update": "student_management.api.auto_sync_employee"
+    }
+}
