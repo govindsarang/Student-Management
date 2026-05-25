@@ -187,8 +187,38 @@ Implemented scheduled tasks using:
 ```python
 scheduler_events
 ```
+## Employee Auto Sync Integration
 
+Implemented automatic employee synchronization using Frappe hooks and external APIs.
+
+### Features
+- Employee auto-sync on create/update
+- Hook-based event-driven integration
+- External API communication using Python requests
+- JSON payload generation
+- Error handling using try/except
+- API response logging using frappe.log_error
+
+### Workflow
+
+Employee Save/Update
+↓
+Frappe Hook Triggered
+↓
+Payload Generated
+↓
+POST Request Sent
+↓
+Response Logged in Error Log
 Created automated fee status checker task.
+
+### Concepts Learned
+- API Integration
+- HTTP Requests
+- Authentication Basics
+- Event-driven Architecture
+- Logging
+- Exception Handling
 
 Executed using:
 
